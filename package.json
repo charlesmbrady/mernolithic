@@ -9,7 +9,7 @@
     "start": "npm run start:prod",
     "start:prod": "node server/src/server.js",
     "start:dev": "concurrently \"nodemon server/src/server.js\" \"npm run client\"",
-    "client": "cd client && npm run start",
+    "client": "cd client && npm run start"
   },
   "repository": {
     "type": "git",
