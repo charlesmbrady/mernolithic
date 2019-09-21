@@ -12,8 +12,8 @@ app.use(express.json({ limit: '100mb' }));
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path');
-	app.use(express.static(path.join(__dirname, '../../client/build/')));
-	app.get('/*', function (req, res) {
+	app.use(express.static(path.join(__dirname, '../../client/build/static')));
+	app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
       });
 }
