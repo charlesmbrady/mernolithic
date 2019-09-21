@@ -12,10 +12,10 @@ app.use(express.json({ limit: '100mb' }));
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path');
-	app.use('/static', express.static(path.join(__dirname, '../../client/build/')));
-	app.get('/', (req, res) => {
-		res.sendFile(path.join(__dirname, '../../client/build/'));
-	});
+	app.use(express.static(path.join(__dirname, '../../client/build/')));
+	app.get('/*', function (req, res) {
+        res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+      });
 }
 
 app.get('/test', (req, res) => res.send('Hello world!'));   // Basic response for testing server
