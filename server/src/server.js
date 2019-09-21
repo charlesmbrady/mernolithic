@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
       });
 }
 
-app.get('/api/test', (req, res) => res.send('Hello world!'));   // Basic response for testing server
+app.get('/test', (req, res) => res.send('Hello world!'));   // Basic response for testing server
 
 // Error handler
 app.use(function (err, req, res, next) {
