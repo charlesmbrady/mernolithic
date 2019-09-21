@@ -3,7 +3,7 @@ const express = require('express');     // Require express
 const app = express();                  // Make app with express
 const PORT = process.env.PORT || 3001;  // Set port to .env or default
 const dbConnection = require('./db/index.js');  // Require the database connection for server to access
-const router = express.Router();
+const path = require('path');
 
 // Middlewares
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
@@ -11,14 +11,13 @@ app.use(express.json({ limit: '100mb' }));
 
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
-	const path = require('path');
-	app.use(express.static(path.join(__dirname, '../../client/build/static')));
-	app.get('/', function (req, res) {
+	app.use(express.static(path.join(__dirname, '../../client/build')));
+	app.get('*', function (req, res) {
         res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
       });
 }
 
-app.get('/test', (req, res) => res.send('Hello world!'));   // Basic response for testing server
+app.get('/api/test', (req, res) => res.send('Hello world!'));   // Basic response for testing server
 
 // Error handler
 app.use(function (err, req, res, next) {

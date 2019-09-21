@@ -5,7 +5,7 @@ import './App.css';
 function App() {
 
   const getRequest = () => {
-    axios.get('/test').then(res => {
+    axios.get('/api/test').then(res => {
       console.log(res);
     }).catch(err => { throw err })
   }
