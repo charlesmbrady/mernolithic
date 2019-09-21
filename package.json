@@ -1,0 +1,37 @@
+{
+  "name": "mernolithic",
+  "version": "1.0.0",
+  "description": "mernolithic",
+  "main": "server/src/server.js",
+  "scripts": {
+    "test": "echo \"no tests yet\"",
+    "start": "npm run start:prod",
+    "start:prod": "node server/src/server.js",
+    "start:dev": "concurrently \"nodemon server/src/server.js\" \"npm run client\"",
+    "client": "cd client && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesmbrady/mernolithic.git"
+  },
+  "keywords": [
+    "MERN"
+  ],
+  "author": "Charles Brady",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlesmbrady/mernolithic/issues"
+  },
+  "homepage": "https://github.com/charlesmbrady/mernolithic#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.2"
+  }
+}
