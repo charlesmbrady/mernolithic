@@ -8,7 +8,11 @@
     "start": "npm run start:prod",
     "start:prod": "node server/src/server.js",
     "start:dev": "concurrently \"nodemon server/src/server.js\" \"npm run client\"",
-    "client": "cd client && npm run start"
+    "client": "cd client && npm run start",
+    "frontend-unit-tests": "cd client && npm run test",
+    "backend-unit-tests": "mocha test/*/*.test.js",
+    "ui-tests": "cypress run",
+    "api-tests": "NODE_ENV=local mocha test/api/*.spec.js"
   },
   "repository": {
     "type": "git",
