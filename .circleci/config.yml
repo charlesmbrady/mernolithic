@@ -120,11 +120,6 @@ jobs:
           command: npm run backend
           background: true
 
-      - run: 
-          name: Run frontend
-          command: npm run frontend
-          background: true
-
       - run:
           name: Run local API tests
           command: yarn wait-on http://localhost:3001 && npm run api-tests
