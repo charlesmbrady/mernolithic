@@ -1,23 +1,64 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import './App.css';
+import Dashboard from "./pages/dashboard/Dashboard";
+import Landing from "./pages/landing/Landing";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const notify = (type, message) => {
+    switch (type) {
+      case 'info':
+        toast.info(message, {
+          position: toast.POSITION.TOP_CENTER
+        });
+        break;
 
-  const getRequest = () => {
-    axios.get('/test').then(res => {
-      console.log(res);
-    }).catch(err => { throw err })
+      case 'success':
+        toast.success(message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        break;
+
+      case 'error':
+        toast.error(message, {
+          position: toast.POSITION.TOP_CENTER
+        });
+        break;
+      
+      default:
+        toast.info(message, {
+          position: toast.POSITION.TOP_CENTER
+        })
+    }
   }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <button onClick={() => getRequest()}>
-          MERNolith
-        </button>
 
-      </header>
-    </div>
+  return (
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => <Landing notify={notify} />}
+          />
+          <Route
+            exact
+            path='/dashboard'
+            render={() => <Dashboard notify={notify} />}
+          />
+          <Route
+            render={() => <Landing notify={notify} />}
+          />
+        </Switch>
+        <ToastContainer autoClose={2000} />
+      </div>
+    </Router>
   );
 }
 
