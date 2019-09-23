@@ -71,6 +71,7 @@ jobs:
           at: ~/
 
       - run: 
+          name: Frontend Unit tests
           command: |
             cd client
             npm run test  
