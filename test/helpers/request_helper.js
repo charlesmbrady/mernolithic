@@ -3,6 +3,11 @@ const supertest = require('supertest')
 
 const baseUrl = supertest(process.env.BASE_URL)
 
+const canaryTest = async () => {
+    return baseUrl.get('/')
+        .set('Accept', '*/*')
+}
+
 const signup = async (signupUser) => {
     return baseUrl.post('/auth/signup')
             .send(signupUser)
@@ -31,6 +36,7 @@ const getHellos = async () => {
 }
 
 module.exports = {
+    canaryTest,
     signup,
     login,
     getHellos,

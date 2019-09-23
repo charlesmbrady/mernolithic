@@ -18,6 +18,12 @@ if (process.env.NODE_ENV === 'production') {
       });
 }
 
+if (process.env.NODE_ENV !== 'production') {
+	app.get('/', (req, res) => {
+		res.sendStatus(200)
+	})
+}
+
 app.get('/test', (req, res) => res.send('Hello world!'));   // Basic response for testing server
 
 app.use(routes);    // Link routes
