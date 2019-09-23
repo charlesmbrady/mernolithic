@@ -1,0 +1,7 @@
+.Signup {
+    text-align: center;
+}
+.Signup > .row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

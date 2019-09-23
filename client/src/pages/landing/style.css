@@ -1,0 +1,9 @@
+.Landing {
+    text-align: center;
+}
+
+.Landing > h1 {
+    color: white;
+    margin-top: 2.5%;
+    margin-bottom: 7%;
+}
