@@ -13,7 +13,7 @@ app.use(express.json({ limit: '100mb' }));
 // If its production environment...
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../../client/build')));        // Specify the location of static files
-	app.get('/', function (req, res) {
+	app.get('/*', function (req, res) {
         res.sendFile(path.join(__dirname, '../../client/build', 'index.html')); // Return our index.html page when home "/" route is hit
       });
 }
