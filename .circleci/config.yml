@@ -120,7 +120,7 @@ jobs:
           background: true
       - run:
           name: Run local API tests
-          command: wait-on http://localhost:3001 && npm run api-tests
+          command: yarn wait-on http://localhost:3001 && npm run api-tests
 
 workflows:
   version: 2
