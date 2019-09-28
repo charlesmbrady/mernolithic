@@ -12,6 +12,8 @@ This is a starter MERN project.
 
     3. then you can run `npm run start:dev` in the root, which will start the frontend and backend.  If you want the database to run you also have to run your mongo database locally by using the `mongod` command in another terminal and connecting the database (ex. using Robo3T) the database name gets updated with your project name automatically, so just make sure the project name in your package.json is correct
 
+    4. (optional) After you have installed all the dependencies, you can run the ./initialize.sh script by typing the command `./initialize.sh` in the terminal from the root of the project.  If you get an error, you may have to run `chmod 755 initialize.sh` in the root first.  Also, make sure you have the heroku-cli installed globally and you have logged in with your username and password.  This script will automatically create and deploy a heroku app for your 'staging' environment and 'production' environment, as well as provision a database for each.  When you want to push changes to these environments later, you can do so for staging using the command `git push staging master` and for production using the command `git push production master`
+
 **Frontend** (runs on port 3000):
 - can run just the front end by doing `npm run frontend` in the root or `npm start` from the `client/` folder
 
