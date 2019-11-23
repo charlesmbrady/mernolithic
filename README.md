@@ -1,5 +1,5 @@
 # MERNolithic
-
+Note: the mern-auth-cra is a better starter file, but doesn't have the CI and testsuites bootstrapped yet
 **Description**:
 This is a monolithic MERN starter project. Here are some of the main features of this starter template:
 
