@@ -2,8 +2,8 @@
 
 defaults: &defaults
   docker:
-      - image: circleci/openjdk:8u171-jdk-node-browsers
-      - image: circleci/mongo:4.2
+    - image: circleci/openjdk:8u171-jdk-node-browsers
+    - image: circleci/mongo:4.2
 
   working_directory: ~/mernolithic
 
@@ -22,7 +22,7 @@ jobs:
             - v1-dependencies-{{.Branch}}-
             - v1-dependencies-
 
-      - run: 
+      - run:
           name: Install backend and general dependencies
           command: npm install
 
@@ -31,29 +31,24 @@ jobs:
           paths:
             - ~/.cache/node_modules
           key: v1-dependencies-{{.Branch}}-{{ checksum "package.json" }}
-      
+
       - restore_cache:
           name: Restore frontend packages
           keys:
             - v1-dependencies-{{.Branch}}-{{ checksum "client/package.json" }}
             - v1-dependencies-{{.Branch}}-
             - v1-dependencies-
-      
+
       - run:
           name: Install frontend packages
           command: cd client && npm install
-      
+
       - save_cache:
           paths:
-            - ~/.cache/node_modules
+            - ~/client/.cache/node_modules
           key: v1-dependencies-{{.Branch}}-{{ checksum "client/package.json" }}
-      
-      - run:
-          name: Run backend
-          command: npm run backend
-          background: true
 
-      - run: 
+      - run:
           name: Run frontend
           command: npm run build-frontend
 
@@ -70,11 +65,11 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - run: 
+      - run:
           name: Frontend Unit tests
           command: |
             cd client
-            npm run test  
+            npm run test
 
   backend_unit_tests:
     <<: *defaults
@@ -83,10 +78,10 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - run: 
+      - run:
           name: Backend Unit Tests
           command: npm run backend-unit-tests
-  
+
   ui_tests:
     <<: *defaults
 
@@ -99,14 +94,14 @@ jobs:
           command: npm run backend
           background: true
 
-      - run: 
+      - run:
           name: Run frontend
           command: npm run frontend
           background: true
 
-      - run: 
-          name: Run UI tests 
-          command: npm run ui-tests 
+      - run:
+          name: Run UI tests
+          command: npm run ui-tests
 
   api_tests:
     <<: *defaults
