@@ -52,10 +52,11 @@ _Backend unit tests_
 _API tests_
 
 - testing APIs with mocha/chai
-- to run API tests, use the command `npm run api-tests`, which run in the NODE_ENV=local by default
+- to run API tests, first make sure the backend is running, and then use the command `npm run api-tests`, which run in the NODE_ENV=local by default
 - put api tests in the _test/api_ folder and name like \*.spec.js
 
 _UI tests_
 
 - end-to-end testing the UI with Cypress.io
-- to run ui tests, use the command `npm run ui-tests` in the root, which will run any of the \*.spec.js files in the cypress/integrations/ directory
+- to run ui tests, make sure the front and backend are running and then use the command `npm run ui-tests` in the root, which will run any of the \*.spec.js files in the cypress/integrations/ directory
+- if you'd like to see the tests actually running in the test runner, make sure the app is running, then run the command `npx cypress open` which will open the test runner and you can just click "run all specs" and see the tests happening
